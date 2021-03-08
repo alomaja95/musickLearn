@@ -15,6 +15,8 @@ class CreateInstructorsTable extends Migration
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('instructor_id')->constrained('users');
+            $table->string('status')->default('Pending'); //Pending, Activated, Suspended, Terminated
             $table->timestamps();
         });
     }

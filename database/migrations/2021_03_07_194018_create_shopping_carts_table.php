@@ -15,6 +15,9 @@ class CreateShoppingCartsTable extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('user_id')->constrained('users');
+            $table->integer('volume')->default(1); //Number of item to be purchased
             $table->timestamps();
         });
     }

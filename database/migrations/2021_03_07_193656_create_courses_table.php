@@ -15,6 +15,21 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('type')->default('Free'); //premium or free
+            $table->string('price')->nullable()->default(0.00);
+            $table->string('title', 1000);
+            $table->string('slug', 1500);
+            $table->string('hint', 1000);
+            $table->string('enrolled'); //Number of enrolled students
+            $table->string('language'); //Language used in the course
+            $table->boolean('subtitle_status')->default(false); //true or false
+            $table->string('money_back_guarantee')->default('30-Day Money-Back Guaranteed');
+            $table->integer('seen')->default(0); //Number of people who viewed the course information
+            $table->integer('like')->default(0); //Number of people who liked the course
+            $table->integer('dislike')->default(0); //Number of people who disliked the course
+            $table->text('requirement')->nula; //To be used with TinyWCE editor
+            $table->text('description'); //To be used with TinyWCE editor
             $table->timestamps();
         });
     }

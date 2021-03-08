@@ -15,6 +15,9 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('status')->default('Pending'); //Completed or Pending or Terminated
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

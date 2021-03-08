@@ -15,6 +15,11 @@ class CreateCourseSectionsTable extends Migration
     {
         Schema::create('course_sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('title');
+            $table->string('slug', 1500);
+            $table->string('position'); //Position in course, could 1 to any number
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

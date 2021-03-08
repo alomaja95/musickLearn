@@ -15,6 +15,9 @@ class CreateCourseReviewsTable extends Migration
     {
         Schema::create('course_reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->text('review');
+            $table->foreignId('student_id')->constrained('users');
             $table->timestamps();
         });
     }

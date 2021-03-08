@@ -15,6 +15,8 @@ class CreateWhislistsTable extends Migration
     {
         Schema::create('whislists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

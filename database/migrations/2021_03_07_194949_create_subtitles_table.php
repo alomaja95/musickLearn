@@ -15,6 +15,9 @@ class CreateSubtitlesTable extends Migration
     {
         Schema::create('subtitles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('lesson_id')->constrained('course_section_content');
+            $table->string('language')->default('English');
+            $table->string('location'); //Path to the subtitle file
             $table->timestamps();
         });
     }

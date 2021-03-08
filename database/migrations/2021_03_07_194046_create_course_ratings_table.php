@@ -15,6 +15,9 @@ class CreateCourseRatingsTable extends Migration
     {
         Schema::create('course_ratings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('rating')->default(1); //1 = poor, 2 = fair, 3 = good, 4 = very good, 5 = Excellent
+            $table->foreignId('student_id')->constrained('users');
             $table->timestamps();
         });
     }

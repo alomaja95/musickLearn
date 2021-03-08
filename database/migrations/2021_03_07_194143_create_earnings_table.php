@@ -15,6 +15,10 @@ class CreateEarningsTable extends Migration
     {
         Schema::create('earnings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('date');
+            $table->string('earning');
+            $table->foreignId('instructor_id')->constrained('users');
             $table->timestamps();
         });
     }

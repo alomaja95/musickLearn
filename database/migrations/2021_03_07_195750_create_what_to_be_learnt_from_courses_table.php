@@ -15,6 +15,8 @@ class CreateWhatToBeLearntFromCoursesTable extends Migration
     {
         Schema::create('what_to_be_learnt_from_courses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->string('to_be_learnt', 100);
             $table->timestamps();
         });
     }

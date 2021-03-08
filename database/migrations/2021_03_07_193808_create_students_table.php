@@ -15,6 +15,8 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained('users');
+            $table->string('status')->default('Pending'); //Pending, Activated, Suspended, Terminated
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ class CreateCourseSectionContentsTable extends Migration
     {
         Schema::create('course_section_contents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('course_section_id')->constrained('course_sections');
+            $table->string('title');
+            $table->string('slug', 1500);
+            $table->string('position'); //Position in section, could 1 to any number
+            $table->text('description')->nullable();
+            $table->string('location');//Path to the video file
             $table->timestamps();
         });
     }
